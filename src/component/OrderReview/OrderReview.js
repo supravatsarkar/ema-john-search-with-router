@@ -9,8 +9,8 @@ const OrderReview = () => {
     return (
         <div>
             <h2>Over Review</h2>
-            <h3>{products.length}</h3>
-            <h3>cart lenght: {carts.length}</h3>
+            <h3>Load product length: {products.length}</h3>
+            <h3>Load cart lenght: {carts.length}</h3>
         </div>
     );
 };

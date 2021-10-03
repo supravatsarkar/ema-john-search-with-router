@@ -3,10 +3,12 @@ import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
+import useCart from '../Hooks/useCart';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState([]);
+    // const [cart, setCart] = useState([]);
+    const [cart, setCart] = useCart(products);
     const [serchedProducts, setSearchedProducts] = useState([]);
 
     useEffect(() => {
@@ -19,25 +21,25 @@ const Shop = () => {
             });
     }, []);
 
-    useEffect(() => {
-        // console.log('local storage load start');
-        if (products.length) {
-            const saveCart = getStoredCart();
-            const storedCart = [];
-            for (const key in saveCart) {
-                const addedProducts = products.find(product => product.key === key);
-                // console.log(key, addedProducts);
-                if (addedProducts) {
-                    const quantity = saveCart[key]
-                    addedProducts.quantity = quantity; //New property add
-                    storedCart.push(addedProducts);
-                }
-                // console.log();
-            }
-            console.log(storedCart);
-            setCart(storedCart);
-        }
-    }, [products]);
+    // useEffect(() => {
+    //     // console.log('local storage load start');
+    //     if (products.length) {
+    //         const saveCart = getStoredCart();
+    //         const storedCart = [];
+    //         for (const key in saveCart) {
+    //             const addedProducts = products.find(product => product.key === key);
+    //             // console.log(key, addedProducts);
+    //             if (addedProducts) {
+    //                 const quantity = saveCart[key]
+    //                 addedProducts.quantity = quantity; //New property add
+    //                 storedCart.push(addedProducts);
+    //             }
+    //             // console.log();
+    //         }
+    //         console.log(storedCart);
+    //         setCart(storedCart);
+    //     }
+    // }, [products]);
 
     const onSearch = event => {
         const serchValue = event.target.value;

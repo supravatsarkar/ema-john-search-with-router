@@ -19,6 +19,6 @@ const useCart = products => {
             setCarts(storedCart);
         }
     }, [products]);
-    return [carts];
+    return [carts, setCarts];
 }
 export default useCart;

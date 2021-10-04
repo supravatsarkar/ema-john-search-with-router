@@ -50,8 +50,19 @@ const Shop = () => {
         console.log(searchProducts.length);
     }
     const addToCartHandle = (productFromProduct) => {
-        // console.log(productFromProduct);
-        const newCart = [...cart, productFromProduct];
+        const exits = cart.find(pd => pd.key === productFromProduct.key);
+        console.log(exits);
+        let newCart = [];
+        if (exits) {
+            const rest = cart.filter(pd => pd.key !== productFromProduct.key);
+            exits.quantity = exits.quantity + 1;
+            newCart = [...rest, productFromProduct];
+        }
+        else {
+            productFromProduct.quantity = 1;
+            newCart = [...cart, productFromProduct];
+        }
+        console.log(newCart);
         setCart(newCart);
         addToDb(productFromProduct.key);
     }

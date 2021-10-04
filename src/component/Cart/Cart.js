@@ -2,9 +2,8 @@ import React from 'react';
 import './Cart.css'
 
 const Cart = (props) => {
-
+    // console.log(props);
     const { cart } = props;
-    // console.log(cart);
 
     // const totalPrice = cart.reduce((previousValue, product) => previousValue + product.price, 0);
     let itemOrder = 0;
@@ -53,7 +52,7 @@ const Cart = (props) => {
                     </tr>
                 </tbody>
             </table>
-            <button className="review-order">Review your order</button>
+            {props.children}
         </div>
     );
 };
